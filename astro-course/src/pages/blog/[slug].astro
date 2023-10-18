@@ -30,7 +30,11 @@ const { post } = Astro.props;
 const { Content, headings } = await post.render();
 ---
 
-<Layout title={post.data.title}>
+<Layout
+  title={post.data.title}
+  image={post.data.image}
+  description={post.data.description}
+>
   <Main>
     <a href='/blog' class='text-zinc-500 text-2xl block mb-16 underline'
       >←Back to all blogs</a
