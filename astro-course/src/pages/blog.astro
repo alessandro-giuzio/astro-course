@@ -3,10 +3,13 @@ import Main from '../components/Main.astro';
 import PostList from '../components/PostList.astro';
 import Layout from '../layouts/Layout.astro';
 import H1 from '../components/H1.astro';
+import CategoryList from '../components/CategoryList.astro';
 import Pagination from '../components/Pagination.astro';
 import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('posts')).slice(0, 6);
+const allCategories = posts.flatMap(post => post.data.categories);
+const categories = Array.from(new Set(allCategories));
 ---
 
 <Layout
@@ -18,6 +21,12 @@ const posts = (await getCollection('posts')).slice(0, 6);
     <p class='text-zinc-900 text-2xl mb-24 max-sm:mb-14'>
       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid, magnam!
     </p>
+    <div
+      class='grid grid-cols-[auto,1fr] gap-x-14 gap-y-3 mb-16 max-lg:grid-cols-1'
+    >
+      <h2 class='font-bold text-5xl text-teal-900'>Tags</h2>
+      <CategoryList categories={categories} />
+    </div>
     <div class='mb-12'>
       <Pagination nextURL='/blog/2' />
     </div>
