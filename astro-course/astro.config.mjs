@@ -5,5 +5,5 @@ import tailwind from "@astrojs/tailwind";
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind()],
-  site:"https://zippy-semifreddo-79078c.netlify.app
+  site:"https://zippy-semifreddo-79078c.netlify.app"
 });
