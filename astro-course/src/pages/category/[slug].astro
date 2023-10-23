@@ -48,12 +48,7 @@ const { category, posts } = Astro.props;
     <p class='text-zinc-900 text-2xl mb-24 max-sm:mb-14'>
       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid, magnam!
     </p>
-    <div
-      class='grid grid-cols-[auto,1fr] gap-x-14 gap-y-3 mb-16 max-lg:grid-cols-1'
-    >
-      <h2 class='font-bold text-5xl text-teal-900'>Post tagged</h2>
-      <CategoryList categories={[category]} />
-    </div>
+    <CategoryList categories={[category]} title='Posts Tagged' />
     <div class='mb-12'>
       <Pagination nextURL='/blog/2' />
     </div>
