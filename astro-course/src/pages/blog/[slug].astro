@@ -7,6 +7,7 @@ import Share from '../../components/Share.astro';
 import TableOfContents from '../../components/TableOfContents.astro';
 import { Image, getImage } from 'astro:assets';
 import { getEntryBySlug } from 'astro:content';
+import PostMeta from '../../components/PostMeta.astro';
 
 const { slug } = Astro.params;
 
@@ -22,16 +23,13 @@ const { Content, headings } = await post.render();
 const coverImageSource = (await getImage({ src: post.data.image })).src;
 ---
 
-<Layout
-  title={post.data.title}
-  image={coverImageSource}
-  description={post.data.description}
->
+<Layout title={post.data.title} image={coverImageSource}>
   <Main>
     <a href='/blog' class='text-zinc-500 text-2xl block mb-16 underline'
       >←Back to all blogs</a
     >
     <H1 text={post.data.title} />
+    <PostMeta post={post} />
     <Image
       src={post.data.image}
       alt={post.data.title}

@@ -11,7 +11,7 @@ interface Props {
 const {
   title = 'Alessandro Blog',
   description = 'Blog di Alessandro',
-  image = './images/band.jpg',
+  image = '/images/band.jpg',
 } = Astro.props;
 ---
 
@@ -33,7 +33,7 @@ const {
     <meta property='og:image:alt' content={description} />
     <!-- Open Graph Twitter -->
     <meta property='twitter:card' content='summary_large_image' />
-    <meta propertry='twitter:url' content={Astro.url} />
+    <meta property='twitter:url' content={Astro.url} />
     <meta property='twitter:title' content={title} />
     <meta property='twitter:description' content={description} />
     <meta property='twitter:image' content={image} />

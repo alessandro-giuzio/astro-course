@@ -7,33 +7,15 @@ import CategoryList from '../../components/CategoryList.astro';
 import Pagination from '../../components/Pagination.astro';
 import PostList from '../../components/PostList.astro';
 
-export const getStaticPaths = async () => {
-  const posts = await getCollection('posts');
-  const allCategories = posts.flatMap(post => post.data.categories);
-  const categories = Array.from(new Set(allCategories));
-
-  const paths = categories.map(category => {
-    const postsByCategory = posts.filter(post =>
-      post.data.categories.includes(category)
-    );
-    return {
-      params: {
-        slug: category,
-      },
-      props: {
-        category,
-        posts: postsByCategory,
-      },
-    };
-  });
-  return paths;
-};
-type Props = {
-  category: string;
-  posts: CollectionEntry<'posts'>[];
-};
-
-const { category, posts } = Astro.props;
+const page = Number(Astro.url.searchParams.get('page')) || 1;
+const postsPerPage = Number(import.meta.env.POSTS_PER_PAGE);
+const start = postsPerPage * (page - 1);
+const end = start + postsPerPage;
+const category = Astro.params.slug as string;
+const allPosts = await getCollection('posts');
+const postsByCategory = allPosts
+  .filter(post => post.data.categories.includes(category))
+  const posts = postsByCategory.slice(start, end);
 ---
 
 <Layout
@@ -49,12 +31,20 @@ const { category, posts } = Astro.props;
       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid, magnam!
     </p>
     <CategoryList categories={[category]} title='Posts Tagged' />
-    <div class='mb-12'>
-      <Pagination nextURL='/blog/2' />
+    {
+      posts.length === 0 ? (
+        <p>No Posts where found with that tag</p>
+      ) : (
+      <div class='mb-12'>
+      <Pagination page={page} numberOfPosts={postsByCategory.length} />
     </div>
-    <PostList posts={posts} />
-    <div class='mb-36'>
-      <Pagination nextURL='/blog/2' />
-    </div>
+
+          <PostList posts={posts} />
+          <div class='mb-36'>
+            <Pagination page={page} numberOfPosts={postsByCategory.length} />
+          </div>
+        </>
+      )
+    }
   </Main>
 </Layout>
