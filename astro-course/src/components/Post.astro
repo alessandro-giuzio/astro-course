@@ -42,5 +42,8 @@ const author = await getEntryBySlug('authors', post.data.author);
         <p class='text-zinc-900 text-2xl font-bold'>Unknown</p>
       )
     }
+    <span class='text-zinc-700 text-xl'>
+      {post.data.date}
+    </span>
   </div>
 </article>

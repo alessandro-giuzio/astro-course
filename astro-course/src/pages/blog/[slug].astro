@@ -6,6 +6,7 @@ import H1 from '../../components/H1.astro';
 import Share from '../../components/Share.astro';
 import TableOfContents from '../../components/TableOfContents.astro';
 import { Image, getImage } from 'astro:assets';
+import PostMeta from '../../components/PostMeta.astro';
 
 const { slug } = Astro.params;
 const post = await getEntryBySlug('posts', slug as string);
@@ -28,6 +29,7 @@ const coverImageSource = (await getImage({ src: post.data.image })).src;
       >←Back to all blogs</a
     >
     <H1 text={post.data.title} />
+    <PostMeta post={post} />
     <Image
       src={post.data.image}
       alt={post.data.title}

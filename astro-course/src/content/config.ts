@@ -16,9 +16,9 @@ const postsCollection = defineCollection({
 });
 
 const authorsCollection = defineCollection({
-    schema: z.object({
+    schema: ({ image }) => z.object({
         name: z.string(),
-        image: z.string(),
+        image: image(),
     })
 });
 // 3. Export a single `collections` object to register your collection(s)
