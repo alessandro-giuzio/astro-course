@@ -1,0 +1,6 @@
+{
+  "databaseURL": "https://Alessandro-Giuzio-s-workspace-1fkgss.eu-central-1.xata.sh/db/astro-course",
+  "codegen": {
+    "output": "src/xata.ts"
+  }
+}

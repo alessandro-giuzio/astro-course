@@ -7,7 +7,7 @@ import Share from '../../components/Share.astro';
 import TableOfContents from '../../components/TableOfContents.astro';
 import { Image, getImage } from 'astro:assets';
 import PostMeta from '../../components/PostMeta.astro';
-
+import { getThumbnail } from '../../cloudinary';
 const { slug } = Astro.params;
 const post = await getEntryBySlug('posts', slug as string);
 
@@ -21,7 +21,7 @@ const coverImageSource = (await getImage({ src: post.data.image })).src;
 
 <Layout
   title={post.data.title}
-  image={coverImageSource}
+  image={getThumbnail(post.data.title)}
   description={post.data.description}
 >
   <Main>

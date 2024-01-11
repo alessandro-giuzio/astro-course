@@ -1,0 +1,18 @@
+{
+  "id": "mig_cmf8vnccp64ka5g88vs0",
+  "parentID": "mig_cmf8viscp64ka5g88vr0",
+  "checksum": "1:fc17dac79e51ef64368f37046b01a0df248df9be2255f2e373c57fdcfeb3b456",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "post",
+          "type": "string",
+          "notNull": true,
+          "defaultValue": ""
+        },
+        "table": "comments"
+      }
+    }
+  ]
+}
