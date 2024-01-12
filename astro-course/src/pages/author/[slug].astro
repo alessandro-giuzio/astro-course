@@ -1,9 +1,9 @@
 ---
 import { getCollection, getEntryBySlug } from 'astro:content';
-import Layout from '../../layouts/layout.astro';
-import Main from '../../components/main.astro';
-import H1 from '../../components/h1.astro';
-import PostList from '../../components/postlist.astro';
+import Layout from '../../layouts/Layout.astro';
+import Main from '../../components/Main.astro';
+import H1 from '../../components/H1.astro';
+import PostList from '../../components/PostList.astro';
 const { slug } = Astro.params;
 const author = await getEntryBySlug('authors', slug as string);
 
