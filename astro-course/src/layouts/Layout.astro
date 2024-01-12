@@ -2,6 +2,7 @@
 import '@fontsource-variable/cabin';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { getThumbnail } from '../cloudinary';
 interface Props {
   title?: string;
   description?: string;
@@ -11,7 +12,7 @@ interface Props {
 const {
   title = 'Alessandro Blog',
   description = 'Blog di Alessandro',
-  image = './images/band.jpg',
+  image = getThumbnail('Alessandro Blog'),
 } = Astro.props;
 ---
 
